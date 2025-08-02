@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="style.css">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Bazaar - Reviews</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --main-color: #64cbab;
+            --dark-bg: #0f1f1a;
+            --light-bg: #e6f6f1;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--light-bg);
+            color: #333;
+        }
+
+        header {
+            background-color: var(--main-color);
+            color: white;
+            padding: 1.2rem 2rem;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .main-rating {
+            text-align: center;
+            background-color: white;
+            padding: 2rem;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            margin: 2rem auto;
+            max-width: 800px;
+            border-radius: 10px;
+        }
+
+        .main-rating h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .rating-stars {
+            font-size: 2rem;
+            color: gold;
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .filter-buttons button {
+            background-color: var(--main-color);
+            border: none;
+            padding: 0.6rem 1.4rem;
+            color: rgb(41, 41, 41);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .filter-buttons button:hover {
+            background-color: #4cb095;
+        }
+
+        .review-section {
+            display: none;
+            max-width: 1000px;
+            margin: 0 auto 3rem;
+            padding: 1rem;
+        }
+
+        .review-card {
+            background: white;
+            border-left: 5px solid var(--main-color);
+            margin-bottom: 1rem;
+            padding: 1rem 1.2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .review-card h4 {
+            margin: 0 0 0.5rem;
+        }
+
+        .review-card .date {
+            font-size: 0.85rem;
+            color: gray;
+        }
+
+        .review-card .stars {
+            color: gold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: var(--main-color);
+            color: white;
+        }
+
+
+
+        #flash-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #e9f6f2;
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        #flash-transition.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+  <div class="blink-overlay blink-animate" id="blinkOverlay">
+    <div class="blink-top"></div>
+    <div class="blink-bottom"></div>
+  </div>
+
+    <!-- For Transition -->
+    <div id="flash-transition"></div>
+
+    <header>📚 Book Bazaar - Reader Reviews</header>
+
+    <section class="main-rating">
+        <h2>Overall Rating</h2>
+        <div class="rating-stars">★★★★★</div>
+        <p>Based on 1,245 reviews</p>
+    </section>
+
+    <section class="filter-buttons">
+        <button onclick="showCategory('fiction')">Fiction</button>
+        <button onclick="showCategory('selfhelp')">Self-help</button>
+        <button onclick="showCategory('scifi')">Sci-Fi</button>
+        <button onclick="showCategory('fantasy')">Fantasy</button>
+        <button onclick="showCategory('nonfiction')">Non-Fiction</button>
+        <button onclick="showCategory('romance')">Romance</button>
+    </section>
+
+    <!-- Review Sections -->
+    <section class="review-section" id="fiction">
+        <h3>Fiction Reviews</h3>
+        <div class="review-card">
+            <h4>Anand</h4>
+            <p class="date">1 Aug 2025</p>
+            <p class="stars">★★★★☆</p>
+            <p>Ek number book hai bhaiii</p>
+        </div>
+        <div class="review-card">
+            <h4>Maahi</h4>
+            <p class="date">28 July 2025</p>
+            <p class="stars">★★★★★</p>
+            <p>Noiceee.</p>
+        </div>
+        <!-- Add 4 more similar cards -->
+    </section>
+
+    <section class="review-section" id="selfhelp">
+        <h3>Self-help Reviews</h3>
+        <div class="review-card">
+            <h4>Archit</h4>
+            <p class="date">25 July 2025</p>
+            <p class="stars">★★★★★</p>
+            <p>Truly changed my perspective on life and habits.</p>
+        </div>
+        <div class="review-card">
+            <h4>Ayush</h4>
+            <p class="date">20 July 2025</p>
+            <p class="stars">★★★☆☆</p>
+            <p>Some parts were repetitive, but great examples.</p>
+        </div>
+        <!-- 4 more -->
+    </section>
+
+    <section class="review-section" id="scifi">
+        <h3>Sci-Fi Reviews</h3>
+        <div class="review-card">
+            <h4>Ayesha Khan</h4>
+            <p class="date">18 July 2025</p>
+            <p class="stars">★★★★★</p>
+            <p>Mind-blowing world building. Felt like I was in space.</p>
+        </div>
+        <div class="review-card">
+            <h4>Ravi Joshi</h4>
+            <p class="date">17 July 2025</p>
+            <p class="stars">★★★★☆</p>
+            <p>Innovative tech ideas and thrilling adventure!</p>
+        </div>
+        <!-- 4 more -->
+    </section>
+
+    <!-- Fantasy -->
+    <section class="review-section" id="fantasy">
+        <h3>Fantasy Reviews</h3>
+        <div class="review-card">
+            <h4>Sana Sheikh</h4>
+            <p class="date">15 July 2025</p>
+            <p class="stars">★★★★★</p>
+            <p>A magical journey. The creatures and lore are unforgettable.</p>
+        </div>
+        <!-- more cards -->
+    </section>
+
+    <!-- Non-Fiction -->
+    <section class="review-section" id="nonfiction">
+        <h3>Non-Fiction Reviews</h3>
+        <div class="review-card">
+            <h4>Rohan Mehta</h4>
+            <p class="date">12 July 2025</p>
+            <p class="stars">★★★★☆</p>
+            <p>In-depth analysis and well-researched content.</p>
+        </div>
+        <!-- more cards -->
+    </section>
+
+    <!-- Romance -->
+    <section class="review-section" id="romance">
+        <h3>Romance Reviews</h3>
+        <div class="review-card">
+            <h4>Simran Gill</h4>
+            <p class="date">10 July 2025</p>
+            <p class="stars">★★★★★</p>
+            <p>Sweet and emotional love story. A feel-good read!</p>
+        </div>
+        <!-- more cards -->
+    </section>
+
+
+
+    <script>
+        const sections = document.querySelectorAll(".review-section");
+
+        function showCategory(id) {
+            sections.forEach(sec => sec.style.display = "none");
+            document.getElementById(id).style.display = "block";
+        }
+
+        // Show fiction reviews on initial load
+        showCategory("fiction");
+
+        // Flash on page unload
+        window.addEventListener('beforeunload', function () {
+            document.getElementById('flash-transition').classList.add('show');
+        });
+
+        // Flash on page load
+        window.addEventListener('load', function () {
+            const flash = document.getElementById('flash-transition');
+            flash.classList.add('show');
+            setTimeout(() => flash.classList.remove('show'), 400); // adjust duration as needed
+        });
+    </script>
+
+<script src="script.js"></script>
+</body>
+
+</html>

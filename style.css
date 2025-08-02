@@ -1,0 +1,274 @@
+.bt:hover {
+  background-color: #f3fdfb;
+  border-radius: 50px;
+  height: 50px;
+  width: 50px;
+}
+
+
+
+:root {
+  --mint: #43c3aa;
+  --orange: #ff5c1a;
+  --soft-bg: #f3fdfb;
+  --gray-text: #333333;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Flash overlay */
+.flash-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  z-index: 9999;
+  animation: flashOut 0.6s ease-out forwards;
+}
+
+@keyframes flashOut {
+  0% {
+    opacity: 0.9;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Ripple Effect */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple::after {
+  content: "";
+  position: absolute;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 100%;
+  transform: scale(0);
+  animation: rippleEffect 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes rippleEffect {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Slide Animations */
+@keyframes slide-left {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-down {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-left {
+  animation: slide-left 1s ease-out forwards;
+}
+
+.animate-right {
+  animation: slide-right 1s ease-out forwards;
+}
+
+.animate-up {
+  animation: slide-up 1s ease-out forwards;
+}
+
+.animate-down {
+  animation: slide-down 1s ease-out forwards;
+}
+
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  width: 100%;
+  background: #f7f7f7;
+  padding: 10px 0;
+}
+
+.marquee {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 20s linear infinite;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ff5722;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Optional: reverse marquee direction */
+.marquee.reverse {
+  animation-direction: reverse;
+}
+
+.book-img {
+  height: 120px;
+  width: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.book-img:hover {
+  transform: scale(1.05);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-marquee 30s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll-marquee {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Blink Eye Animation */
+.blink-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10000;
+}
+
+.blink-top,
+.blink-bottom {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: #43c3aa;
+  transform: scaleY(0);
+  transform-origin: center;
+}
+
+.blink-top {
+  top: 0;
+}
+
+.blink-bottom {
+  bottom: 0;
+}
+
+.blink-animate .blink-top {
+  animation: blink-top 0.6s ease-in-out forwards;
+}
+
+.blink-animate .blink-bottom {
+  animation: blink-bottom 0.6s ease-in-out forwards;
+}
+
+@keyframes blink-top {
+  0% {
+    transform: scaleY(0);
+  }
+
+  25% {
+    transform: scaleY(1);
+  }
+
+  75% {
+    transform: scaleY(1);
+  }
+
+  100% {
+    transform: scaleY(0);
+  }
+}
+
+@keyframes blink-bottom {
+  0% {
+    transform: scaleY(0);
+  }
+
+  25% {
+    transform: scaleY(1);
+  }
+
+  75% {
+    transform: scaleY(1);
+  }
+
+  100% {
+    transform: scaleY(0);
+  }
+}
+
+
+#box {
+  margin-left: 30%;
+}
